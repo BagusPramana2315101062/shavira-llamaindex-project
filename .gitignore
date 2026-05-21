@@ -1,0 +1,48 @@
+# Virtual environment
+.venv/
+.venv_gpu/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secret
+.env
+.env.local
+*.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dataset internal
+data/
+
+# Storage/cache/model/index besar
+storage/
+cache/
+models/
+embeddings/
+faiss_index/
+*.index
+*.faiss
+*.pkl
+*.npy
+*.npz
+*.pt
+*.bin
+*.safetensors
+
+# Output eksperimen besar
+results/
+results_*/
+logs/
+outputs/
