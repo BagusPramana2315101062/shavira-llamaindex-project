@@ -34,6 +34,8 @@ def save_experiment_config(
         "bm25_mode": args.bm25_mode,
         "deduplicate": not args.no_deduplicate,
         "evaluation_level": "record/context hash",
+        "primary_metrics": ["Hit@K", "MRR"],
+        "supporting_metrics": ["Precision@K", "Recall@K"],
         "retrieval_methods": RETRIEVAL_METHODS,
         "index_cache_dir": args.index_cache_dir,
         "index_cache_path": index_cache_path,

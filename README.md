@@ -134,8 +134,10 @@ python src/evaluate_retrieval.py \
 
 ## 10. Interpretasi Awal
 
-- Jika `Recall@5` tinggi, gold context sering masuk dalam 5 hasil teratas.
+- Jika `Hit@5` atau `Hit@10` tinggi, gold context sering berhasil ditemukan dalam hasil Top-K.
 - Jika `MRR` tinggi, gold context sering muncul pada peringkat awal.
+- `Precision@K` dan `Recall@K` tetap disajikan sebagai metrik pendukung.
+- `MAP` tidak digunakan karena pada dataset dengan satu gold context utama per unit evaluasi, nilainya cenderung setara dengan MRR.
 - Jika `HYBRID_RRF` lebih tinggi dari BM25 dan FAISS, berarti penggabungan lexical dan semantic retrieval lebih sesuai untuk korpus SHAVIRA.
 - Jika BM25 lebih tinggi, kemungkinan query validasi banyak memakai istilah yang sama dengan dokumen.
 - Jika FAISS lebih tinggi, kemungkinan query validasi banyak membutuhkan pencocokan makna/parafrasa.
