@@ -109,7 +109,7 @@ Setelah eksperimen selesai, folder `results/` akan berisi:
 
 ## 8. Definisi Evaluasi
 
-Dataset validasi memiliki satu `Context` utama untuk setiap `Question`. Karena `Context` pada dataset validasi cocok dengan record JSONL, project ini mengevaluasi relevansi pada level `text_hash` record asal.
+Dataset validasi menggunakan pasangan `Question` dan `Context` sebagai dasar evaluasi retrieval. `Question` digunakan sebagai query, sedangkan `Context` digunakan sebagai gold context pada setiap unit evaluasi. Kolom Answer tidak digunakan dalam perhitungan metrik utama karena penelitian ini berfokus pada retrieval, bukan generation.
 
 Artinya:
 
