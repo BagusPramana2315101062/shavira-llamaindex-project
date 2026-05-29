@@ -69,7 +69,7 @@ def rrf_fusion(
 
     for ranked in ranked_lists:
         for rank, item in enumerate(ranked, start=1):
-            key = item.node_id
+            key = item.text_hash or item.node_id
             fused_scores[key] = fused_scores.get(key, 0.0) + (1.0 / (rrf_k + rank))
 
             if key not in best_item:

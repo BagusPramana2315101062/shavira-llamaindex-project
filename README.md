@@ -1,6 +1,6 @@
 # SHAVIRA Retrieval Experiment dengan LlamaIndex
 
-Project ini dibuat untuk eksperimen proposal: perbandingan **BM25**, **dense retrieval BGE-M3 + FAISS**, dan **hybrid retrieval BM25 + FAISS via RRF** terhadap relevansi hasil *knowledge search* SHAVIRA.
+Project ini dibuat untuk eksperimen proposal: perbandingan **BM25**, **dense retrieval BGE-M3 + FAISS**, dan **hybrid retrieval BM25 + FAISS via RRF** terhadap relevansi hasil _knowledge search_ SHAVIRA.
 
 ## 1. Struktur Folder
 
@@ -76,11 +76,12 @@ python src/evaluate_retrieval.py --data-dir data/raw --output-dir results
 Konfigurasi bawaan:
 
 - `chunk_size = 512`
-- `chunk_overlap = 80`
+- `chunk_overlap = 64`
 - `eval_k = 5 10`
-- `candidate_k = 100`
-- `rrf_k = 60`
+- `candidate_k = 50`
+- `rrf_k = 10`
 - `embedding_model = BAAI/bge-m3`
+- `faiss_index = IndexFlatIP`
 
 ## 6. Uji Cepat Dulu
 
@@ -124,10 +125,10 @@ python src/evaluate_retrieval.py \
   --data-dir data/raw \
   --output-dir results \
   --chunk-size 512 \
-  --chunk-overlap 80 \
+  --chunk-overlap 64 \
   --eval-k 5 10 \
-  --candidate-k 100 \
-  --rrf-k 60 \
+  --candidate-k 50 \
+  --rrf-k 10 \
   --model-name BAAI/bge-m3
 ```
 
@@ -138,4 +139,3 @@ python src/evaluate_retrieval.py \
 - Jika `HYBRID_RRF` lebih tinggi dari BM25 dan FAISS, berarti penggabungan lexical dan semantic retrieval lebih sesuai untuk korpus SHAVIRA.
 - Jika BM25 lebih tinggi, kemungkinan query validasi banyak memakai istilah yang sama dengan dokumen.
 - Jika FAISS lebih tinggi, kemungkinan query validasi banyak membutuhkan pencocokan makna/parafrasa.
-

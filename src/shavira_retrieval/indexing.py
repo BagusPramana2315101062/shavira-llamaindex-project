@@ -92,6 +92,7 @@ def make_faiss_cache_path(args: argparse.Namespace) -> str:
         f"chunk_{args.chunk_size}_"
         f"overlap_{args.chunk_overlap}_"
         f"maxlen_{args.embed_max_length}_"
+        f"faiss_IndexFlatIP_"
         f"dedup_{int(not args.no_deduplicate)}"
     )
 
@@ -156,11 +157,11 @@ def build_retrievers(
         test_emb = embed_model.get_text_embedding("tes dimensi embedding")
         dim = len(test_emb)
 
-        faiss_index = faiss.IndexFlatL2(dim)
+        faiss_index = faiss.IndexFlatIP(dim)
         vector_store = FaissVectorStore(faiss_index=faiss_index)
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-        print(f"Membangun FAISS index dengan dimensi embedding: {dim}")
+        print(f"Membangun FAISS IndexFlatIP dengan dimensi embedding: {dim}")
 
         try:
             vector_index = VectorStoreIndex(
